@@ -6,41 +6,42 @@ Librería es una aplicación que simula una librería virtual donde los usuarios
 ## Estructura del Proyecto
 
 libreria-app/
-│
+libreria-app/
 ├── src/
-│ ├── main/
-│ │ ├── java/
-│ │ │ └── com/
-│ │ │ └── palmen/
-│ │ │ └── libreria/
-│ │ │ ├── app/
-│ │ │ │ └── LibreriaMain.java # Punto de entrada principal de la aplicación
-│ │ │ ├── controllers/
-│ │ │ │ ├── LibreriaMainController.java # Controlador para la vista principal
-│ │ │ │ ├── LoginController.java # Controlador para la vista de login
-│ │ │ │ ├── RegistroController.java # Controlador para la vista de registro
-│ │ │ │ ├── AudioLibrosController.java # Controlador para la vista de audiolibros
-│ │ │ │ ├── CategoriasController.java # Controlador para la vista de categorías
-│ │ │ │ └── MiCuentaController.java # Controlador para la vista de cuenta del usuario
-│ │ │ └── utilities/
-│ │ │ └── VentanaUtil.java # Clase utilitaria para la gestión de ventanas
-│ │ ├── resources/
-│ │ │ ├── com/
-│ │ │ │ └── palmen/
-│ │ │ │ └── libreria/
-│ │ │ │ ├── controllers/
-│ │ │ │ │ ├── LibreriaMainView.fxml # Vista principal de la librería en FXML
-│ │ │ │ │ ├── LoginView.fxml # Vista de login en FXML
-│ │ │ │ │ ├── RegistroView.fxml # Vista de registro en FXML
-│ │ │ │ │ ├── AudioLibrosView.fxml # Vista de audiolibros en FXML
-│ │ │ │ │ ├── CategoriasView.fxml # Vista de categorías en FXML
-│ │ │ │ │ ├── MiCuentaView.fxml # Vista de cuenta del usuario en FXML
-│ │ │ │ │ └── InicioView.fxml # Vista de inicio en FXML
-│ │ │ │ └── css/
-│ │ │ │ └── styles.css # Hoja de estilos CSS para la aplicación
-│ └── test/ # Directorio para pruebas (opcional)
-│
-└── README.md # Documentación del proyecto
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── palmen/
+│   │   │           └── libreria/
+│   │   │               ├── app/
+│   │   │               │   └── LibreriaMain.java
+│   │   │               ├── controllers/
+│   │   │               │   ├── LibreriaMainController.java
+│   │   │               │   ├── LoginController.java
+│   │   │               │   ├── RegistroController.java
+│   │   │               │   ├── AudioLibrosController.java
+│   │   │               │   ├── CategoriasController.java
+│   │   │               │   ├── MiCuentaController.java
+│   │   │               │   └── InicioController.java
+│   │   │               └── utilities/
+│   │   │                   └── VentanaUtil.java
+│   │   └── resources/
+│   │       └── com/
+│   │           └── palmen/
+│   │               └── libreria/
+│   │                   ├── controllers/
+│   │                   │   ├── LibreriaMainView.fxml
+│   │                   │   ├── LoginView.fxml
+│   │                   │   ├── RegistroView.fxml
+│   │                   │   ├── AudioLibrosView.fxml
+│   │                   │   ├── CategoriasView.fxml
+│   │                   │   ├── MiCuentaView.fxml
+│   │                   │   └── InicioView.fxml
+│   │                   ├── css/
+│   │                   │   └── styles.css
+│   │                   └── imgs/ # Carpeta para imágenes
+└── test/
+
 
 ## Configuración Básica
 

@@ -1,0 +1,25 @@
+/* styles.css */
+.label-underline:hover {
+    -fx-text-fill: black;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+/* Style for the VBox containing categories */
+.categories-box {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-padding: 5px;
+    -fx-spacing: 5px;
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+    -fx-transition: max-height 0.3s ease-out, opacity 0.3s ease-out;  /* Smooth transition */
+    -fx-min-width: 100px;  /* Min width to avoid taking full width */
+    -fx-pref-width: -1;  /* Remove preferred width to auto size */
+}
+
+/* Style for the VBox containing categories when hovered over the main label */
+.custom-label:hover, .categories-box{
+    -fx-opacity: 1;
+    -fx-max-height: 200px;  /* Adjust as necessary */
+}

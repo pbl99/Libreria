@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="490.0" prefWidth="544.0" style="-fx-background-color: #E8F5E9; -fx-background-image: url('C:/Users/Pablo/Desktop/patronLogin.jpg');" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.palmen.libreria.app.libreria.controllers.LoginController">
+    <children>
+        <Pane fx:id="paneLateral" prefHeight="490.0" prefWidth="190.0">
+            <children>
+                <ImageView fitHeight="498.0" fitWidth="190.0" layoutX="1.0" layoutY="-6.0">
+                    <image>
+                        <Image url="@../imgs/loginregister/patronLogin.jpg" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Label layoutX="325.0" layoutY="123.0" text="LOGIN" textFill="#1b5d20">
+            <font>
+                <Font name="System Bold" size="25.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtEmail" layoutX="290.0" layoutY="232.0" />
+        <TextField fx:id="txtContraseña" layoutX="290.0" layoutY="297.0" />
+        <Label layoutX="346.0" layoutY="200.0" text="EMAIL" textFill="#1b5d20">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label layoutX="328.0" layoutY="267.0" text="CONTRASEÑA" textFill="#1b5d20">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnEntrar" layoutX="332.0" layoutY="351.0" mnemonicParsing="false" text="ENTRAR" textFill="#1b5d20">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Label fx:id="lblClickAqui" layoutX="276.0" layoutY="171.0" text="¿No tienes cuenta? Haz click aquí" underline="true" />
+        <ImageView fx:id="imgMinimizarAplicacion" fitHeight="36.0" fitWidth="29.0" layoutX="486.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imgs/minimizar.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="imgCerrarAplicacion" fitHeight="29.0" fitWidth="29.0" layoutX="515.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imgs/cerrar.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

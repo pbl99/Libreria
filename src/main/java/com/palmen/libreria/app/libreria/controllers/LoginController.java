@@ -1,13 +1,22 @@
 package com.palmen.libreria.app.libreria.controllers;
 
+import com.palmen.libreria.app.libreria.dao.ConexionBD;
+import com.palmen.libreria.app.libreria.dao.UsuarioDAOImpl;
 import com.palmen.libreria.app.libreria.utilities.VentanaUtil;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class LoginController {
 
@@ -32,6 +41,9 @@ public class LoginController {
     @FXML
     private AnchorPane anchorPane;
 
+    @FXML
+    private Label lblErrorLogin;
+
     private Stage stage;
 
     private double xOffset = 0;
@@ -39,8 +51,8 @@ public class LoginController {
     private double yOffset = 0;
 
     public void initialize() {
-        obtenerDatos();
-        setStage(stage);
+        haciaRegistro();
+        loginCorrecto();
     }
 
     public void setStage(Stage stage) {
@@ -49,49 +61,72 @@ public class LoginController {
         VentanaUtil.hacerArrastrable(stage, anchorPane);
     }
 
-    private void obtenerDatos() {
-        btnEntrar.setOnMouseClicked(e -> {
-            if (txtEmail.getText() == "pabloam1999@hotmail.com" && txtContraseña.getText() == "INVIENRO") {
-                System.out.println("El usuario conectado es el admin");
-            } else {
-                System.out.println("ERROR");
+    public void haciaRegistro() {
+        lblClickAqui.setOnMouseClicked(e -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/palmen/libreria/app/libreria/controllers/RegistroView.fxml"));
+                Scene scene = new Scene(loader.load());
+
+                RegistroController registroController = loader.getController();
+                Stage registroStage = new Stage();
+                registroStage.setTitle("Login");
+                registroStage.setResizable(false);
+                registroStage.initStyle(StageStyle.UNDECORATED);
+                registroStage.setScene(scene);
+                registroController.setStage(registroStage);
+
+                registroStage.show();
+
+                // Cerrar la ventana actual
+                stage.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         });
     }
 
-    //Procedimiento para la lógica que afectará al movimiento de la aplicación y los labels que usaremos para minimizar y cerrar
-   /* public void setStage(Stage stage) {
-        this.stage = stage;
+    public void haciaLibreriaMain() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/palmen/libreria/app/libreria/controllers/LibreriaMainView.fxml"));
+            Scene scene = new Scene(loader.load());
 
-        // Inicializar los controladores de botones
-        imgCerrarAplicacion.setOnMouseClicked(event -> stage.close());
-        imgMinimizarAplicacion.setOnMouseClicked(event -> stage.setIconified(true));
+            LibreriaMainController libreriaMainController = loader.getController();
+            Stage libreriaStage = new Stage();
+            libreriaStage.setTitle("Libreria");
+            libreriaStage.setResizable(false);
+            libreriaStage.initStyle(StageStyle.UNDECORATED);
+            libreriaStage.setScene(scene);
+            libreriaMainController.setStage(libreriaStage);
 
-        imgCerrarAplicacion.setOnMouseEntered(e -> {
-            Scene scene = stage.getScene();
-            scene.setCursor(Cursor.HAND);
-        });
-        imgCerrarAplicacion.setOnMouseExited(e -> {
-            Scene scene = stage.getScene();
-            scene.setCursor(Cursor.DEFAULT);
-        });
-        imgMinimizarAplicacion.setOnMouseEntered(e -> {
-            Scene scene = stage.getScene();
-            scene.setCursor(Cursor.HAND);
-        });
-        imgMinimizarAplicacion.setOnMouseExited(e -> {
-            Scene scene = stage.getScene();
-            scene.setCursor(Cursor.DEFAULT);
-        });
+            libreriaStage.show();
 
-        // Hacer que la ventana sea arrastrable
-        anchorPane.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
+            // Cerrar la ventana actual
+            stage.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void loginCorrecto() {
+        btnEntrar.setOnMouseClicked(e -> {
+            try {
+                // Crear la conexión a la base de datos
+                ConexionBD conexionBD = new ConexionBD();
+                Connection conn = conexionBD.connection();
+
+                // Crear el DAO y registrar el usuario
+                UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl(conn);
+                if (usuarioDAO.verificarCredenciales(txtEmail.getText(), txtContraseña.getText())) {
+                    haciaLibreriaMain();
+                }else{
+                    lblErrorLogin.setText("El email o la contraseña son incorrectos");
+                }
+
+                // Cerrar la conexión
+                conexionBD.cerrarConexion(conn);
+            } catch (SQLException ex) {
+                throw new RuntimeException("Error al registrar usuario en la base de datos", ex);
+            }
         });
-        anchorPane.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX() - xOffset);
-            stage.setY(event.getScreenY() - yOffset);
-        });
-    }*/
+    }
 }

@@ -43,7 +43,6 @@ public class LibreriaMainController {
 
     @FXML
     public void initialize() {
-        setStage(stage);
         try {
             showInicio();
         } catch (IOException e) {
@@ -55,6 +54,7 @@ public class LibreriaMainController {
         this.stage = stage;
         VentanaUtil.configurarBotonesVentana(stage, imgCerrarAplicacion, imgMinimizarAplicacion);
         VentanaUtil.hacerArrastrable(stage, anchorPane);
+        //cambiarImgMinimizar();
     }
 
     @FXML
@@ -93,4 +93,11 @@ public class LibreriaMainController {
         contentPane.getChildren().clear();
         contentPane.getChildren().add(root);
     }
+
+    /*private void cambiarImgMinimizar() {
+        Image imgMinimizarNormal = new Image(Objects.requireNonNull(VentanaUtil.class.getResource("/com/palmen/libreria/app/libreria/imgs/minimizar.png")).toString());
+        if (stage != null && stage.isIconified()) {
+            imgMinimizarAplicacion.setImage(imgMinimizarNormal);
+        }
+    }*/
 }

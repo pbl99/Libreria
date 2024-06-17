@@ -2,6 +2,7 @@ module com.palmen.libreria.app.libreria {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires java.sql;
 
 
     opens com.palmen.libreria.app.libreria to javafx.fxml;
